@@ -1,24 +1,30 @@
-# README
+# コンテナのセットアップ用メモ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### rails s するまで
 
-Things you may want to cover:
+1. [コンテナの設定](https://github.com/yamori-masato/docker-rails-api/tree/setup-container)
 
-* Ruby version
+2. [アプリの作成](https://github.com/yamori-masato/docker-rails-api/tree/rails-new-app)
 
-* System dependencies
 
-* Configuration
+```
+$ docker-compose run web rails new . --force --no-deps --database=postgresql --api -T
+$ docker-compose build
+```
 
-* Database creation
+3. [DBの設定](https://github.com/yamori-masato/docker-rails-api/tree/setup-db-config)
 
-* Database initialization
 
-* How to run the test suite
+4. サーバを立てる
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ docker-compose up
+$ docker-compose exec web rails db:create
+```
 
-* Deployment instructions
+### サーバを立てながら他の作業
 
-* ...
+```
+$ docker-compose up
+$ docker-compose exec web bash
+```
